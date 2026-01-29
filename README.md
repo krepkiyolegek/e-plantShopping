@@ -1,1 +1,1 @@
-# coding-project-template
+e-plantShopping is an app for shopping in an online plant store offering a variety of indoor plants.
