@@ -19,13 +19,21 @@ const CartItem = ({ onContinueShopping }) => {
 
 
   const handleIncrement = (item) => {
+    dispatch(updateQuantity({ name: item.name, quantity: item.quantity + 1 }));
   };
 
   const handleDecrement = (item) => {
-   
-  };
+  if (item.quantity > 1) {
+    // Если товаров больше одного, просто уменьшаем на 1
+    dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
+  } else {
+    // Если был 1, и нажали минус — удаляем товар полностью
+    dispatch(removeItem(item.name));
+  }
+};
 
   const handleRemove = (item) => {
+    dispatch(removeItem(item.name));
   };
 
   // Calculate total cost based on quantity for an item
